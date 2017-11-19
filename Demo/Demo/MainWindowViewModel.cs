@@ -11,6 +11,15 @@ namespace Demo
 {
 	public class MainWindowViewModel : INotifyPropertyChanged
 	{
+		public MainWindowViewModel()
+		{
+			foreach (EmployeeTypeEnum v in Enum.GetValues(typeof(EmployeeTypeEnum)))
+				EmployeeTypes.Add(v);
+		}
+
+
+
+
 		public event PropertyChangedEventHandler PropertyChanged;
 
 
@@ -39,6 +48,18 @@ namespace Demo
 		{
 			get => _secretAccountCode;
 			set => SetProperty<string>(ref _secretAccountCode, value);
+		}
+
+
+
+		public ObservableCollection<EmployeeTypeEnum> EmployeeTypes { get; private set; } =
+			new ObservableCollection<EmployeeTypeEnum>();
+
+		private EmployeeTypeEnum _selectedEmployeeType = EmployeeTypeEnum.CEO;
+		public EmployeeTypeEnum SelectedEmployeeType
+		{
+			get => _selectedEmployeeType;
+			set => SetProperty<EmployeeTypeEnum>(ref _selectedEmployeeType, value);
 		}
 	}
 }

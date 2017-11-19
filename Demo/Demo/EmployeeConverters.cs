@@ -34,4 +34,31 @@ namespace Demo
 			throw new NotImplementedException();
 		}
 	}
+
+
+	public class EmployeeImageConverter : IValueConverter
+	{
+		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+		{
+			EmployeeTypeEnum empType = (EmployeeTypeEnum) value;
+			switch (empType)
+			{
+				case EmployeeTypeEnum.CEO:
+					return new Uri("/ceo.png", UriKind.Relative);
+				case EmployeeTypeEnum.EngDirector:
+					return new Uri("/director.png", UriKind.Relative);
+				case EmployeeTypeEnum.Engineer:
+					return new Uri("/engineer.png", UriKind.Relative);
+				case EmployeeTypeEnum.VicePres:
+					return new Uri("/vicepres.png", UriKind.Relative);
+				default:
+					return null;
+			}
+		}
+
+		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+		{
+			throw new NotImplementedException();
+		}
+	}
 }

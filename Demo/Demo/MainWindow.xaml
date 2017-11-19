@@ -11,6 +11,7 @@
 		<ResourceDictionary>
 			<local:BoolToVisConverter x:Key="boolVisConverter" />
 			<local:EmployeeColorConverter x:Key="empColorConverter" />
+			<local:EmployeeImageConverter x:Key="empImageConverter" />
 		</ResourceDictionary>
 	</Window.Resources>
 
@@ -36,5 +37,7 @@
 			<ComboBox ItemsSource="{Binding EmployeeTypes}" SelectedItem="{Binding SelectedEmployeeType}" />
 			<TextBox Text="{Binding SelectedEmployeeType}" Foreground="{Binding SelectedEmployeeType,Converter={StaticResource empColorConverter}}" Margin="0,2" />
 		</StackPanel>
+
+		<Image Grid.Row="1" Grid.Column="1" Width="48" Height="48" Margin="4" Source="{Binding SelectedEmployeeType,Converter={StaticResource empImageConverter}}" />
 	</Grid>
 </Window>
